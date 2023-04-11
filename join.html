@@ -31,24 +31,29 @@
               <div class="card shadow-3-strong" style="border-radius: 1rem;">
                 <div class="card-body p-5 text-center">
       
-                  <h3 class="mb-5">로그인</h3>
+                  <h3 class="mb-5">회원가입</h3>
       
                   <div class="form-outline mb-4">
-                    <input type="email" id="email" class="form-control form-control-lg" required/>
+                    <input type="email" id="email" class="form-control form-control-lg" />
                     <label class="form-label" for="email">이메일</label>
                   </div>
-      
+
                   <div class="form-outline mb-4">
-                    <input type="password" id="pwd" class="form-control form-control-lg" required/>
+                    <input type="text" id="userName" class="form-control form-control-lg" />
+                    <label class="form-label" for="userName">이름</label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="text" id="userId" class="form-control form-control-lg" />
+                    <label class="form-label" for="userId">아이디</label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="password" id="pwd" class="form-control form-control-lg" />
                     <label class="form-label" for="pwd">비밀번호</label>
                   </div>
   
-                  <button class="btn btn-primary btn-lg btn-block" type="submit" onclick="login()">로그인</button>
-      
-                  <hr class="my-4">
-      
-                  <button class="btn btn-lg btn-block btn-primary" style="background-color: #dd4b39;"
-                    type="submit" onclick="location='join.html'">회원가입</button>
+                  <button class="btn btn-primary btn-lg btn-block" type="submit" onclick="join()">회원가입</button>
       
                 </div>
               </div>

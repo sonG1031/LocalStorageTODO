@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+    rel="stylesheet"
+    />
+
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>LocalStroage TODO</title>
+</head>
+<body>
+    <section class="vh-100" style="background-color: #eee;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-lg-9 col-xl-7">
+                <div class="card rounded-3">
+                <div class="card-body p-4">
+
+                    <h4 class="text-center my-3 pb-3" id="title">투뚜 리쓰뜨</h4>
+
+                    <!-- <form class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2"> -->
+                    <div class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
+                        <div class="col-12">
+                            <div class="form-outline">
+                            <input type="text" id="form1" class="form-control todo" />
+                            <label class="form-label" for="form1" >할 일 입력</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary" onclick="addTodo()">추가</button>
+                        </div>
+                    </div>
+                        
+
+                    <!-- <div class="col-12">
+                        <button type="submit" class="btn btn-warning">Get tasks</button>
+                    </div> -->
+                    <!-- </form> -->
+
+                    <table class="table mb-4">
+                        <thead>
+                            <tr>
+                            <th scope="col">할 일</th>
+                            <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody id ="todoList">
+                        </tbody>
+                    </table>
+
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    <!-- MDB -->
+    <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"
+    ></script>
+    <script 
+    type="text/javascript"
+    src="js/todoMethod.js"
+    ></script>
+</body>
+</html>
