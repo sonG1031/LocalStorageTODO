@@ -1,12 +1,12 @@
 const join = () => {
-    let userList = JSON.parse(localStorage.getItem('users'));
+    let userList = JSON.parse(localStorage.getItem("users"));
 
     if (userList == null) {
-        localStorage.setItem('users', '[]');
-        userList = JSON.parse(localStorage.getItem('users'));
+        localStorage.setItem("users", "[]");
+        userList = JSON.parse(localStorage.getItem("users"));
     }
 
-    let emailVal = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
+    let emailVal = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
 
     let email = document.querySelector("#email");
     let userName = document.querySelector("#userName");
@@ -14,29 +14,25 @@ const join = () => {
     let pwd = document.querySelector("#pwd");
 
     // 유효성 검사
-    if (email.value == '' || !emailVal.test(email.value)) {
+    if (email.value == "" || !emailVal.test(email.value)) {
         alert("입력을 확인해주세요.");
         return;
-    }
-    else if (userName.value == '') {
+    } else if (userName.value == "") {
         alert("입력을 확인해주세요.");
         return;
-    }
-    else if (userId.value == '') {
+    } else if (userId.value == "") {
         alert("입력을 확인해주세요.");
         return;
-    }
-    else if (pwd.value == '') {
+    } else if (pwd.value == "") {
         alert("입력을 확인해주세요.");
         return;
     }
 
-    for(let i = 0; i < userList.length; i++) {
+    for (let i = 0; i < userList.length; i++) {
         if (userList[i].email == email.value) {
             alert("중복되는 이메일이 있습니다.");
             return;
-        }
-        else if (userList[i].id == userId.value) {
+        } else if (userList[i].id == userId.value) {
             alert("중복되는 아이디가 있습니다.");
             return;
         }
@@ -49,28 +45,32 @@ const join = () => {
     user.name = userName.value;
     user.pwd = pwd.value;
 
-
     userList.push(user);
     const json = JSON.stringify(userList);
-    localStorage.setItem('users', json);
+    localStorage.setItem("users", json);
 
     alert("회원가입에 성공하셨습니다.");
-    location = 'index.html';
+    location = "index.html";
 };
 
 const login = () => {
     let email = document.querySelector("#email");
     let pwd = document.querySelector("#pwd");
-    let userList = JSON.parse(localStorage.getItem('users'));
-
-    let emailVal = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
-
-    if (email.value == '' || !emailVal.test(email.value)) {
-        alert('입력을 다시 확인해주세요.');
+    let userList = JSON.parse(localStorage.getItem("users"));
+    if (userList == null) {
+        localStorage.setItem("users", "[]");
+        userList = JSON.parse(localStorage.getItem("users"));
+        alert("유저가 존재하지 않습니다.");
         return;
     }
-    else if(pwd.value == '') {
-        alert('입력을 다시 확인해주세요.');
+
+    let emailVal = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
+
+    if (email.value == "" || !emailVal.test(email.value)) {
+        alert("입력을 다시 확인해주세요.");
+        return;
+    } else if (pwd.value == "") {
+        alert("입력을 다시 확인해주세요.");
         return;
     }
 
@@ -79,21 +79,20 @@ const login = () => {
             alert("로그인 성공!");
 
             const json = JSON.stringify(userList[i]);
-            localStorage.setItem('currentUser', json);
+            localStorage.setItem("currentUser", json);
 
             let todos = JSON.parse(localStorage.getItem("todos"));
-            if(todos == null) {
+            if (todos == null) {
                 todos = [];
                 todos.push({
                     id: userList[i].id,
-                    todos: []
+                    todos: [],
                 });
 
                 localStorage.setItem("todos", JSON.stringify(todos));
-            }
-            else {
+            } else {
                 let flag = false;
-                for(let j = 0; j < todos.length; j++) {
+                for (let j = 0; j < todos.length; j++) {
                     if (todos[j].id == userList[i].id) {
                         flag = true;
                         break;
@@ -102,21 +101,22 @@ const login = () => {
                 if (flag == false) {
                     todos.push({
                         id: userList[i].id,
-                        todos: []
+                        todos: [],
                     });
                     localStorage.setItem("todos", JSON.stringify(todos));
                 }
             }
 
-
-            location = 'list.html';
+            location = "list.html";
+            return;
         }
     }
-
-
+    // 반복문이 다 끝났음에도 함수가 종료되지 않은 것은 유저가 없다는 것
+    alert("유저가 존재하지 않습니다.");
+    return;
 };
 
 const logOut = () => {
-    localStorage.removeItem('currentUser');
-    location = 'index.html';
+    localStorage.removeItem("currentUser");
+    location = "index.html";
 };
