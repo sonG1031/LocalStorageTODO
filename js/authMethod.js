@@ -115,3 +115,8 @@ const login = () => {
 
 
 };
+
+const logOut = () => {
+    localStorage.removeItem('currentUser');
+    location = 'index.html';
+};
